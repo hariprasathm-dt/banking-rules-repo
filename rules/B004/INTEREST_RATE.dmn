@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/"
+             xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/"
+             xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/"
+             id="B004_INTEREST_RATE" name="Chase - Interest Rate"
+             namespace="https://banking.rules/B004/INTEREST_RATE">
+  <decision id="InterestRateDecision" name="Interest Rate">
+    <decisionTable id="InterestRateTable" hitPolicy="FIRST">
+      <input id="i1" label="Balance"><inputExpression typeRef="number"><text>balance</text></inputExpression></input>
+      <input id="i2" label="Customer Type"><inputExpression typeRef="string"><text>customerType</text></inputExpression></input>
+      <output id="o1" label="Interest Rate (%)" name="interestRate" typeRef="number"/>
+      <output id="o2" label="Tier" name="tier" typeRef="string"/>
+      <rule id="r1"><inputEntry><text>&gt;= 100000</text></inputEntry><inputEntry><text>"PREMIUM"</text></inputEntry><outputEntry><text>5</text></outputEntry><outputEntry><text>"PLATINUM"</text></outputEntry></rule>
+      <rule id="r2"><inputEntry><text>&gt;= 50000</text></inputEntry><inputEntry><text>"PREMIUM"</text></inputEntry><outputEntry><text>4.5</text></outputEntry><outputEntry><text>"GOLD"</text></outputEntry></rule>
+      <rule id="r3"><inputEntry><text>&gt;= 25000</text></inputEntry><inputEntry><text>"REGULAR"</text></inputEntry><outputEntry><text>3.25</text></outputEntry><outputEntry><text>"SILVER"</text></outputEntry></rule>
+      <rule id="r4"><inputEntry><text>&gt;= 10000</text></inputEntry><inputEntry><text>"REGULAR"</text></inputEntry><outputEntry><text>3</text></outputEntry><outputEntry><text>"SILVER"</text></outputEntry></rule>
+      <rule id="r5"><inputEntry><text>&gt;= 5000</text></inputEntry><inputEntry><text>-</text></inputEntry><outputEntry><text>2.5</text></outputEntry><outputEntry><text>"BASIC"</text></outputEntry></rule>
+      <rule id="r6"><inputEntry><text>-</text></inputEntry><inputEntry><text>-</text></inputEntry><outputEntry><text>2.25</text></outputEntry><outputEntry><text>"BASIC"</text></outputEntry></rule>
+    </decisionTable>
+  </decision>
+  <dmndi:DMNDI><dmndi:DMNDiagram><dmndi:DMNShape dmnElementRef="InterestRateDecision"><dc:Bounds x="150" y="150" width="200" height="80"/></dmndi:DMNShape></dmndi:DMNDiagram></dmndi:DMNDI>
+</definitions>

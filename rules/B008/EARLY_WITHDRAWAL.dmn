@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/"
+             xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/"
+             xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/"
+             id="B008_EARLY_WITHDRAWAL" name="US Bank - Early Withdrawal Penalty"
+             namespace="https://banking.rules/B008/EARLY_WITHDRAWAL">
+  <decision id="EarlyWithdrawalDecision" name="Early Withdrawal Penalty">
+    <decisionTable id="EarlyWithdrawalTable" hitPolicy="FIRST">
+      <input id="i1" label="Days Remaining"><inputExpression typeRef="number"><text>daysRemaining</text></inputExpression></input>
+      <input id="i2" label="Original Tenure (Days)"><inputExpression typeRef="number"><text>originalTenure</text></inputExpression></input>
+      <output id="o1" label="Penalty Rate (%)" name="penaltyRate" typeRef="number"/>
+      <output id="o2" label="Description" name="description" typeRef="string"/>
+      <rule id="r1"><inputEntry><text>&gt;= 270</text></inputEntry><inputEntry><text>&gt;= 365</text></inputEntry><outputEntry><text>2.00</text></outputEntry><outputEntry><text>"High penalty - very early withdrawal"</text></outputEntry></rule>
+      <rule id="r2"><inputEntry><text>&gt;= 180</text></inputEntry><inputEntry><text>-</text></inputEntry><outputEntry><text>1.50</text></outputEntry><outputEntry><text>"Medium-high penalty"</text></outputEntry></rule>
+      <rule id="r3"><inputEntry><text>&gt;= 90</text></inputEntry><inputEntry><text>-</text></inputEntry><outputEntry><text>1.00</text></outputEntry><outputEntry><text>"Medium penalty"</text></outputEntry></rule>
+      <rule id="r4"><inputEntry><text>&gt;= 30</text></inputEntry><inputEntry><text>-</text></inputEntry><outputEntry><text>0.50</text></outputEntry><outputEntry><text>"Low penalty"</text></outputEntry></rule>
+      <rule id="r5"><inputEntry><text>-</text></inputEntry><inputEntry><text>-</text></inputEntry><outputEntry><text>0.25</text></outputEntry><outputEntry><text>"Minimal penalty"</text></outputEntry></rule>
+    </decisionTable>
+  </decision>
+  <dmndi:DMNDI><dmndi:DMNDiagram><dmndi:DMNShape dmnElementRef="EarlyWithdrawalDecision"><dc:Bounds x="150" y="150" width="200" height="80"/></dmndi:DMNShape></dmndi:DMNDiagram></dmndi:DMNDI>
+</definitions>

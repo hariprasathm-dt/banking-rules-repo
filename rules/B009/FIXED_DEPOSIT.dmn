@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/"
+             xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/"
+             xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/"
+             id="B009_FIXED_DEPOSIT" name="PNC Bank - Fixed Deposit"
+             namespace="https://banking.rules/B009/FIXED_DEPOSIT">
+  <decision id="FixedDepositDecision" name="Fixed Deposit Rate">
+    <decisionTable id="FixedDepositTable" hitPolicy="FIRST">
+      <input id="i1" label="Tenure (Days)"><inputExpression typeRef="number"><text>tenure</text></inputExpression></input>
+      <input id="i2" label="Amount"><inputExpression typeRef="number"><text>amount</text></inputExpression></input>
+      <output id="o1" label="Interest Rate (%)" name="interestRate" typeRef="number"/>
+      <output id="o2" label="Category" name="category" typeRef="string"/>
+      <rule id="r1"><inputEntry><text>&gt;= 365</text></inputEntry><inputEntry><text>&gt;= 100000</text></inputEntry><outputEntry><text>7.7</text></outputEntry><outputEntry><text>"1 Year Plus Premium"</text></outputEntry></rule>
+      <rule id="r2"><inputEntry><text>&gt;= 365</text></inputEntry><inputEntry><text>-</text></inputEntry><outputEntry><text>7.45</text></outputEntry><outputEntry><text>"1 Year Plus"</text></outputEntry></rule>
+      <rule id="r3"><inputEntry><text>&gt;= 180</text></inputEntry><inputEntry><text>-</text></inputEntry><outputEntry><text>7.2</text></outputEntry><outputEntry><text>"6 Months Plus"</text></outputEntry></rule>
+      <rule id="r4"><inputEntry><text>&gt;= 90</text></inputEntry><inputEntry><text>-</text></inputEntry><outputEntry><text>6.7</text></outputEntry><outputEntry><text>"3 Months Plus"</text></outputEntry></rule>
+      <rule id="r5"><inputEntry><text>&gt;= 30</text></inputEntry><inputEntry><text>-</text></inputEntry><outputEntry><text>6.2</text></outputEntry><outputEntry><text>"1 Month Plus"</text></outputEntry></rule>
+      <rule id="r6"><inputEntry><text>-</text></inputEntry><inputEntry><text>-</text></inputEntry><outputEntry><text>5.7</text></outputEntry><outputEntry><text>"Short Term"</text></outputEntry></rule>
+    </decisionTable>
+  </decision>
+  <dmndi:DMNDI><dmndi:DMNDiagram><dmndi:DMNShape dmnElementRef="FixedDepositDecision"><dc:Bounds x="150" y="150" width="200" height="80"/></dmndi:DMNShape></dmndi:DMNDiagram></dmndi:DMNDI>
+</definitions>
