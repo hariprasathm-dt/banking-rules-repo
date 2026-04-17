@@ -1,175 +1,38 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20230324/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20230324/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:feel="https://www.omg.org/spec/DMN/20230324/FEEL/" xmlns:kie="https://kie.org/dmn/extensions/1.0" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="B001_INTEREST_RATE" name="American Express - Interest Rate" namespace="https://banking.rules/B001/INTEREST_RATE">
-  <itemDefinition id="_73BB71F5-8E35-4202-B7B6-6188FD4BE0A2" name="New data type" isCollection="true" typeLanguage="https://www.omg.org/spec/DMN/20230324/FEEL/">
-    <typeRef>date</typeRef>
-  </itemDefinition>
-  <decision id="InterestRateDecision" name="Interest Rate">
-    <decisionTable id="InterestRateTable" hitPolicy="FIRST">
-      <input id="input_balance" label="Balance">
-        <inputExpression id="inputExpr_balance" typeRef="number">
-          <text>balance</text>
-        </inputExpression>
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/"
+             xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/"
+             xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/"
+             id="B001_INTEREST_RATE"
+             name="B001 - Interest Rate Decision"
+             namespace="https://banking.rules/B001/INTEREST_RATE">
+  <decision id="decision_interest_rate" name="Interest Rate Decision">
+    <variable id="var_decision_interest_rate" name="Interest Rate Decision" typeRef="number"/>
+    <decisionTable id="table_interest_rate" hitPolicy="FIRST">
+      <input id="i_balance" label="Balance">
+        <inputExpression typeRef="number"><text>balance</text></inputExpression>
       </input>
-      <input id="input_customerType" label="Customer Type">
-        <inputExpression id="inputExpr_customerType" typeRef="string">
-          <text>customerType</text>
-        </inputExpression>
+      <input id="i_customerType" label="CustomerType">
+        <inputExpression typeRef="string"><text>customerType</text></inputExpression>
       </input>
-      <output id="output_rate" label="Interest Rate (%)" name="interestRate" typeRef="number" />
-      <output id="output_tier" label="Tier" name="tier" typeRef="string" />
-      <rule id="rule_1">
-        <inputEntry id="ie_1_1">
-          <text>&gt;= 100000</text>
-        </inputEntry>
-        <inputEntry id="ie_1_2">
-          <text>&quot;PREMIUM&quot;</text>
-        </inputEntry>
-        <outputEntry id="oe_1_1">
-          <text>5.25</text>
-        </outputEntry>
-        <outputEntry id="oe_1_2">
-          <text>&quot;PLATINUM&quot;</text>
-        </outputEntry>
+      <output id="o_interestRate" name="interestRate" label="Interest Rate (%)" typeRef="number"/>
+      <rule id="r1">
+        <inputEntry><text>&gt;= 100000</text></inputEntry>
+        <inputEntry><text>"PREMIUM"</text></inputEntry>
+        <outputEntry><text>5.5</text></outputEntry>
       </rule>
-      <rule id="rule_2">
-        <inputEntry id="ie_2_1">
-          <text>&gt;= 50000</text>
-        </inputEntry>
-        <inputEntry id="ie_2_2">
-          <text>&quot;PREMIUM&quot;</text>
-        </inputEntry>
-        <outputEntry id="oe_2_1">
-          <text>4.75</text>
-        </outputEntry>
-        <outputEntry id="oe_2_2">
-          <text>&quot;GOLD&quot;</text>
-        </outputEntry>
+      <rule id="r2">
+        <inputEntry><text>&gt;= 50000</text></inputEntry>
+        <inputEntry><text>-</text></inputEntry>
+        <outputEntry><text>4.75</text></outputEntry>
       </rule>
-      <rule id="rule_3">
-        <inputEntry id="ie_3_1">
-          <text>&gt;= 25000</text>
-        </inputEntry>
-        <inputEntry id="ie_3_2">
-          <text>&quot;REGULAR&quot;</text>
-        </inputEntry>
-        <outputEntry id="oe_3_1">
-          <text>3.50</text>
-        </outputEntry>
-        <outputEntry id="oe_3_2">
-          <text>&quot;SILVER&quot;</text>
-        </outputEntry>
-      </rule>
-      <rule id="rule_4">
-        <inputEntry id="ie_4_1">
-          <text>&gt;= 10000</text>
-        </inputEntry>
-        <inputEntry id="ie_4_2">
-          <text>&quot;REGULAR&quot;</text>
-        </inputEntry>
-        <outputEntry id="oe_4_1">
-          <text>3.25</text>
-        </outputEntry>
-        <outputEntry id="oe_4_2">
-          <text>&quot;SILVER&quot;</text>
-        </outputEntry>
-      </rule>
-      <rule id="rule_5">
-        <inputEntry id="ie_5_1">
-          <text>&gt;= 5000</text>
-        </inputEntry>
-        <inputEntry id="ie_5_2">
-          <text>-</text>
-        </inputEntry>
-        <outputEntry id="oe_5_1">
-          <text>2.75</text>
-        </outputEntry>
-        <outputEntry id="oe_5_2">
-          <text>&quot;BASIC&quot;</text>
-        </outputEntry>
-      </rule>
-      <rule id="rule_6">
-        <inputEntry id="ie_6_1">
-          <text>-</text>
-        </inputEntry>
-        <inputEntry id="ie_6_2">
-          <text>-</text>
-        </inputEntry>
-        <outputEntry id="oe_6_1">
-          <text>2.25</text>
-        </outputEntry>
-        <outputEntry id="oe_6_2">
-          <text>&quot;BASIC&quot;</text>
-        </outputEntry>
+      <rule id="r3">
+        <inputEntry><text>-</text></inputEntry>
+        <inputEntry><text>-</text></inputEntry>
+        <outputEntry><text>3.5</text></outputEntry>
       </rule>
     </decisionTable>
   </decision>
-  <businessKnowledgeModel name="New BKM" id="_E0B8364A-2F06-4002-90E0-37D9496387E1">
-    <variable name="New BKM" id="_2606720A-B08A-4614-A3AE-711C4D2CC09F" />
-  </businessKnowledgeModel>
-  <inputData name="New Input Data" id="_CC4E4E17-F848-4028-8FDB-2C46F4D76C2A">
-    <variable name="New Input Data" id="_B2AFC7B9-885B-44C9-9A80-6FE762C16B75" />
-  </inputData>
-  <inputData name="New Input Data" id="_D97D61B2-AA78-4C67-A07A-D15A977E1256">
-    <variable name="New Input Data" id="_38C3F6C9-8D4D-48C5-BE04-F33212B936F7" />
-  </inputData>
-  <knowledgeSource name="New Knowledge Source" id="_42581289-032B-4450-9BFC-7ECAEE9FF645" />
-  <knowledgeSource name="New Knowledge Source" id="_AB63AE52-0647-420F-A4E2-7C73D22443D4">
-    <authorityRequirement id="_101BD9D2-2005-418C-B51A-9136A84CA0AD">
-      <requiredAuthority href="#_42581289-032B-4450-9BFC-7ECAEE9FF645" />
-    </authorityRequirement>
-  </knowledgeSource>
-  <group id="_5D54F30B-6606-4479-9BD8-ED7D35AA813A" name="New group" />
-  <textAnnotation id="_C1FBDA6A-2D40-4015-989D-77E0E31A0D81">
-    <text>werwerwerwe</text>
-  </textAnnotation>
-  <dmndi:DMNDI>
-    <dmndi:DMNDiagram id="_5FF3CADF-B51E-448E-ABCA-AB4349E540EE" name="Default DRD" useAlternativeInputDataShape="true">
-      <di:extension>
-        <kie:ComponentsWidthsExtension>
-          <kie:ComponentWidths />
-        </kie:ComponentsWidthsExtension>
-      </di:extension>
-      <dmndi:DMNShape dmnElementRef="InterestRateDecision" id="_586C0F26-2724-4E93-B17F-09D495675611">
-        <dc:Bounds x="150" y="150" width="200" height="80" />
-      </dmndi:DMNShape>
-      <dmndi:DMNShape id="_45204080-EA81-4444-B3E9-A88AF1635049" dmnElementRef="_5D54F30B-6606-4479-9BD8-ED7D35AA813A" isCollapsed="false" isListedInputData="false">
-        <dc:Bounds x="-120" y="240" width="280" height="200" />
-      </dmndi:DMNShape>
-      <dmndi:DMNShape id="_32F8AA8A-7A61-4318-8401-CAE0315CB040" dmnElementRef="_C1FBDA6A-2D40-4015-989D-77E0E31A0D81" isCollapsed="false" isListedInputData="false">
-        <dc:Bounds x="300" y="480" width="200" height="200" />
-      </dmndi:DMNShape>
-      <dmndi:DMNShape id="_08BB6D18-9D34-4443-9113-86FB64072465" dmnElementRef="_E0B8364A-2F06-4002-90E0-37D9496387E1" isCollapsed="false" isListedInputData="false">
-        <dc:Bounds x="500" y="220" width="160" height="80" />
-      </dmndi:DMNShape>
-      <dmndi:DMNShape id="_71240EE3-F7AE-49EE-A563-274FD939D1E9" dmnElementRef="_CC4E4E17-F848-4028-8FDB-2C46F4D76C2A" isCollapsed="false" isListedInputData="false">
-        <dc:Bounds x="-100" y="100" width="160" height="80" />
-      </dmndi:DMNShape>
-      <dmndi:DMNShape id="_3B7A8808-5F65-47C6-8F19-A5BF205241EF" dmnElementRef="_D97D61B2-AA78-4C67-A07A-D15A977E1256" isCollapsed="false" isListedInputData="false">
-        <dc:Bounds x="300" y="20" width="160" height="80" />
-      </dmndi:DMNShape>
-      <dmndi:DMNShape id="_E8D250F3-3F71-48C0-BACD-A0304934FDCA" dmnElementRef="_42581289-032B-4450-9BFC-7ECAEE9FF645" isCollapsed="false" isListedInputData="false">
-        <dc:Bounds x="460" y="340" width="340" height="140" />
-      </dmndi:DMNShape>
-      <dmndi:DMNShape id="_3792F206-8A7A-44FA-B9FB-1107E0F335CE" dmnElementRef="_AB63AE52-0647-420F-A4E2-7C73D22443D4" isCollapsed="false" isListedInputData="false">
-        <dc:Bounds x="840" y="560" width="160" height="80" />
-      </dmndi:DMNShape>
-      <dmndi:DMNEdge id="_CFD7D21C-D35E-4CEE-AA3A-C269863498A6-AUTO-TARGET" dmnElementRef="_101BD9D2-2005-418C-B51A-9136A84CA0AD" sourceElement="_E8D250F3-3F71-48C0-BACD-A0304934FDCA" targetElement="_3792F206-8A7A-44FA-B9FB-1107E0F335CE">
-        <di:waypoint x="630" y="410" />
-        <di:waypoint x="920" y="600" />
-      </dmndi:DMNEdge>
-    </dmndi:DMNDiagram>
-    <dmndi:DMNDiagram id="_E826C617-9A9B-4833-A096-DB44E37A821B" name="Unnamed DRD" useAlternativeInputDataShape="false">
-      <di:extension>
-        <kie:ComponentsWidthsExtension>
-          <kie:ComponentWidths />
-        </kie:ComponentsWidthsExtension>
-      </di:extension>
-      <dmndi:DMNShape id="_39725891-C54A-4E27-96A7-BE433D908ED2" dmnElementRef="_E0B8364A-2F06-4002-90E0-37D9496387E1" isCollapsed="false">
-        <dc:Bounds x="112" y="112" width="160" height="80" />
-      </dmndi:DMNShape>
-      <dmndi:DMNShape id="_CEA9D280-EECB-4DB5-BC25-07491932FED6" dmnElementRef="_D97D61B2-AA78-4C67-A07A-D15A977E1256" isCollapsed="false">
-        <dc:Bounds x="472" y="112" width="160" height="80" />
-      </dmndi:DMNShape>
-    </dmndi:DMNDiagram>
-  </dmndi:DMNDI>
+  <dmndi:DMNDI><dmndi:DMNDiagram>
+    <dmndi:DMNShape dmnElementRef="decision_interest_rate"><dc:Bounds x="150" y="150" width="200" height="80"/></dmndi:DMNShape>
+  </dmndi:DMNDiagram></dmndi:DMNDI>
 </definitions>

@@ -2,21 +2,22 @@
 <definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/"
              xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/"
              xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/"
-             id="B006_OVERDRAFT_LIMIT" name="Wells Fargo - Overdraft Limit"
+             id="B006_OVERDRAFT_LIMIT"
+             name="B006 - Overdraft Limit Decision"
              namespace="https://banking.rules/B006/OVERDRAFT_LIMIT">
-  <decision id="OverdraftLimitDecision" name="Overdraft Limit">
-    <variable id="var_OverdraftLimitDecision" name="Overdraft Limit" typeRef="number"/>
-    <decisionTable id="OverdraftLimitTable" hitPolicy="FIRST">
-      <input id="i1" label="Account History (Months)"><inputExpression typeRef="number"><text>accountHistoryMonths</text></inputExpression></input>
-      <input id="i2" label="Average Monthly Balance"><inputExpression typeRef="number"><text>avgMonthlyBalance</text></inputExpression></input>
-      <output id="o1" label="Overdraft Limit" name="overdraftLimit" typeRef="number"/>
-      <output id="o2" label="Interest Rate (%)" name="overdraftRate" typeRef="number"/>
-      <rule id="r1"><inputEntry><text>&gt;= 36</text></inputEntry><inputEntry><text>&gt;= 100000</text></inputEntry><outputEntry><text>50000</text></outputEntry><outputEntry><text>12.0</text></outputEntry></rule>
-      <rule id="r2"><inputEntry><text>&gt;= 24</text></inputEntry><inputEntry><text>&gt;= 50000</text></inputEntry><outputEntry><text>25000</text></outputEntry><outputEntry><text>13.5</text></outputEntry></rule>
-      <rule id="r3"><inputEntry><text>&gt;= 12</text></inputEntry><inputEntry><text>&gt;= 25000</text></inputEntry><outputEntry><text>10000</text></outputEntry><outputEntry><text>15.0</text></outputEntry></rule>
-      <rule id="r4"><inputEntry><text>&gt;= 6</text></inputEntry><inputEntry><text>-</text></inputEntry><outputEntry><text>5000</text></outputEntry><outputEntry><text>16.5</text></outputEntry></rule>
-      <rule id="r5"><inputEntry><text>-</text></inputEntry><inputEntry><text>-</text></inputEntry><outputEntry><text>0</text></outputEntry><outputEntry><text>18.0</text></outputEntry></rule>
+  <decision id="decision_overdraft_limit" name="Overdraft Limit Decision">
+    <variable id="var_decision_overdraft_limit" name="Overdraft Limit Decision" typeRef="number"/>
+    <decisionTable id="table_overdraft_limit" hitPolicy="FIRST">
+      <input id="i_accountHistory" label="AccountHistory">
+        <inputExpression typeRef="string"><text>accountHistory</text></inputExpression>
+      </input>
+      <output id="o_overdraftLimit" name="overdraftLimit" label="Overdraft Limit" typeRef="number"/>
+      <rule id="r1"><inputEntry><text>"EXCELLENT"</text></inputEntry><outputEntry><text>50000</text></outputEntry></rule>
+      <rule id="r2"><inputEntry><text>"GOOD"</text></inputEntry><outputEntry><text>25000</text></outputEntry></rule>
+      <rule id="r3"><inputEntry><text>-</text></inputEntry><outputEntry><text>10000</text></outputEntry></rule>
     </decisionTable>
   </decision>
-  <dmndi:DMNDI><dmndi:DMNDiagram><dmndi:DMNShape dmnElementRef="OverdraftLimitDecision"><dc:Bounds x="150" y="150" width="200" height="80"/></dmndi:DMNShape></dmndi:DMNDiagram></dmndi:DMNDI>
+  <dmndi:DMNDI><dmndi:DMNDiagram>
+    <dmndi:DMNShape dmnElementRef="decision_overdraft_limit"><dc:Bounds x="150" y="150" width="200" height="80"/></dmndi:DMNShape>
+  </dmndi:DMNDiagram></dmndi:DMNDI>
 </definitions>

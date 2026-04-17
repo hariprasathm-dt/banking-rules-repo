@@ -2,22 +2,22 @@
 <definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/"
              xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/"
              xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/"
-             id="B007_CREDIT_CARD_REWARDS" name="Capital One - Credit Card Rewards"
+             id="B007_CREDIT_CARD_REWARDS"
+             name="B007 - Credit Card Rewards Decision"
              namespace="https://banking.rules/B007/CREDIT_CARD_REWARDS">
-  <decision id="CreditCardRewardsDecision" name="Credit Card Rewards">
-    <variable id="var_CreditCardRewardsDecision" name="Credit Card Rewards" typeRef="string"/>
-    <decisionTable id="CreditCardRewardsTable" hitPolicy="FIRST">
-      <input id="i1" label="Spend Category"><inputExpression typeRef="string"><text>category</text></inputExpression></input>
-      <input id="i2" label="Monthly Spend"><inputExpression typeRef="number"><text>monthlySpend</text></inputExpression></input>
-      <output id="o1" label="Reward Points per 100" name="rewardPoints" typeRef="number"/>
-      <output id="o2" label="Cashback (%)" name="cashbackPct" typeRef="number"/>
-      <rule id="r1"><inputEntry><text>"TRAVEL"</text></inputEntry><inputEntry><text>&gt;= 50000</text></inputEntry><outputEntry><text>10</text></outputEntry><outputEntry><text>5.0</text></outputEntry></rule>
-      <rule id="r2"><inputEntry><text>"TRAVEL"</text></inputEntry><inputEntry><text>-</text></inputEntry><outputEntry><text>7</text></outputEntry><outputEntry><text>3.5</text></outputEntry></rule>
-      <rule id="r3"><inputEntry><text>"DINING"</text></inputEntry><inputEntry><text>-</text></inputEntry><outputEntry><text>8</text></outputEntry><outputEntry><text>4.0</text></outputEntry></rule>
-      <rule id="r4"><inputEntry><text>"GROCERIES"</text></inputEntry><inputEntry><text>-</text></inputEntry><outputEntry><text>5</text></outputEntry><outputEntry><text>2.5</text></outputEntry></rule>
-      <rule id="r5"><inputEntry><text>"FUEL"</text></inputEntry><inputEntry><text>-</text></inputEntry><outputEntry><text>4</text></outputEntry><outputEntry><text>1.0</text></outputEntry></rule>
-      <rule id="r6"><inputEntry><text>-</text></inputEntry><inputEntry><text>-</text></inputEntry><outputEntry><text>2</text></outputEntry><outputEntry><text>0.5</text></outputEntry></rule>
+  <decision id="decision_credit_card_rewards" name="Credit Card Rewards Decision">
+    <variable id="var_decision_credit_card_rewards" name="Credit Card Rewards Decision" typeRef="number"/>
+    <decisionTable id="table_credit_card_rewards" hitPolicy="FIRST">
+      <input id="i_category" label="Category">
+        <inputExpression typeRef="string"><text>category</text></inputExpression>
+      </input>
+      <output id="o_rewardPoints" name="rewardPoints" label="Reward Points" typeRef="number"/>
+      <rule id="r1"><inputEntry><text>"DINING"</text></inputEntry><outputEntry><text>5.0</text></outputEntry></rule>
+      <rule id="r2"><inputEntry><text>"TRAVEL"</text></inputEntry><outputEntry><text>3.0</text></outputEntry></rule>
+      <rule id="r3"><inputEntry><text>-</text></inputEntry><outputEntry><text>1.0</text></outputEntry></rule>
     </decisionTable>
   </decision>
-  <dmndi:DMNDI><dmndi:DMNDiagram><dmndi:DMNShape dmnElementRef="CreditCardRewardsDecision"><dc:Bounds x="150" y="150" width="200" height="80"/></dmndi:DMNShape></dmndi:DMNDiagram></dmndi:DMNDI>
+  <dmndi:DMNDI><dmndi:DMNDiagram>
+    <dmndi:DMNShape dmnElementRef="decision_credit_card_rewards"><dc:Bounds x="150" y="150" width="200" height="80"/></dmndi:DMNShape>
+  </dmndi:DMNDiagram></dmndi:DMNDI>
 </definitions>
