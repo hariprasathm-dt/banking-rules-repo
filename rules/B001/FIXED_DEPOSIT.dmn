@@ -1,10 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/"
              xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/"
              xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/"
              id="B001_FIXED_DEPOSIT" name="American Express - Fixed Deposit"
              namespace="https://banking.rules/B001/FIXED_DEPOSIT">
   <decision id="FixedDepositDecision" name="Fixed Deposit Rate">
+    <variable id="var_FixedDepositDecision" name="Fixed Deposit Rate" typeRef="number"/>
     <decisionTable id="FixedDepositTable" hitPolicy="FIRST">
       <input id="i1" label="Tenure (Days)">
         <inputExpression typeRef="number"><text>tenure</text></inputExpression>

@@ -5,6 +5,7 @@
              id="B008_OVERDRAFT_LIMIT" name="US Bank - Overdraft Limit"
              namespace="https://banking.rules/B008/OVERDRAFT_LIMIT">
   <decision id="OverdraftLimitDecision" name="Overdraft Limit">
+    <variable id="var_OverdraftLimitDecision" name="Overdraft Limit" typeRef="number"/>
     <decisionTable id="OverdraftLimitTable" hitPolicy="FIRST">
       <input id="i1" label="Account History (Months)"><inputExpression typeRef="number"><text>accountHistoryMonths</text></inputExpression></input>
       <input id="i2" label="Average Monthly Balance"><inputExpression typeRef="number"><text>avgMonthlyBalance</text></inputExpression></input>

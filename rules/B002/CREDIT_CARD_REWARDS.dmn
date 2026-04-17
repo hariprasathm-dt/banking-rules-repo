@@ -5,6 +5,7 @@
              id="B002_CREDIT_CARD_REWARDS" name="Citibank - Credit Card Rewards"
              namespace="https://banking.rules/B002/CREDIT_CARD_REWARDS">
   <decision id="CreditCardRewardsDecision" name="Credit Card Rewards">
+    <variable id="var_CreditCardRewardsDecision" name="Credit Card Rewards" typeRef="string"/>
     <decisionTable id="CreditCardRewardsTable" hitPolicy="FIRST">
       <input id="i1" label="Spend Category"><inputExpression typeRef="string"><text>category</text></inputExpression></input>
       <input id="i2" label="Monthly Spend"><inputExpression typeRef="number"><text>monthlySpend</text></inputExpression></input>

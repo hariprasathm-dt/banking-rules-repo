@@ -1,10 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/"
              xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/"
              xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/"
              id="B001_LOAN_ELIGIBILITY" name="American Express - Loan Eligibility"
              namespace="https://banking.rules/B001/LOAN_ELIGIBILITY">
   <decision id="LoanEligibilityDecision" name="Loan Eligibility">
+    <variable id="var_LoanEligibilityDecision" name="Loan Eligibility" typeRef="number"/>
     <decisionTable id="LoanEligibilityTable" hitPolicy="FIRST">
       <input id="i1" label="Credit Score">
         <inputExpression typeRef="number"><text>creditScore</text></inputExpression>

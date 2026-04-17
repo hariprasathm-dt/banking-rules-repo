@@ -5,6 +5,7 @@
              id="B010_LOAN_ELIGIBILITY" name="TD Bank - Loan Eligibility"
              namespace="https://banking.rules/B010/LOAN_ELIGIBILITY">
   <decision id="LoanEligibilityDecision" name="Loan Eligibility">
+    <variable id="var_LoanEligibilityDecision" name="Loan Eligibility" typeRef="number"/>
     <decisionTable id="LoanEligibilityTable" hitPolicy="FIRST">
       <input id="i1" label="Credit Score"><inputExpression typeRef="number"><text>creditScore</text></inputExpression></input>
       <input id="i2" label="Monthly Income"><inputExpression typeRef="number"><text>monthlyIncome</text></inputExpression></input>

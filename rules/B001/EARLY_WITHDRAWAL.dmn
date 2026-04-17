@@ -1,10 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/"
              xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/"
              xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/"
              id="B001_EARLY_WITHDRAWAL" name="American Express - Early Withdrawal Penalty"
              namespace="https://banking.rules/B001/EARLY_WITHDRAWAL">
   <decision id="EarlyWithdrawalDecision" name="Early Withdrawal Penalty">
+    <variable id="var_EarlyWithdrawalDecision" name="Early Withdrawal Penalty" typeRef="number"/>
     <decisionTable id="EarlyWithdrawalTable" hitPolicy="FIRST">
       <input id="i1" label="Days Remaining">
         <inputExpression typeRef="number"><text>daysRemaining</text></inputExpression>

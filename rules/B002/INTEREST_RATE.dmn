@@ -5,6 +5,7 @@
              id="B002_INTEREST_RATE" name="Citibank - Interest Rate"
              namespace="https://banking.rules/B002/INTEREST_RATE">
   <decision id="InterestRateDecision" name="Interest Rate">
+    <variable id="var_InterestRateDecision" name="Interest Rate" typeRef="number"/>
     <decisionTable id="InterestRateTable" hitPolicy="FIRST">
       <input id="i1" label="Balance"><inputExpression typeRef="number"><text>balance</text></inputExpression></input>
       <input id="i2" label="Customer Type"><inputExpression typeRef="string"><text>customerType</text></inputExpression></input>

@@ -5,6 +5,7 @@
              id="B002_FIXED_DEPOSIT" name="Citibank - Fixed Deposit"
              namespace="https://banking.rules/B002/FIXED_DEPOSIT">
   <decision id="FixedDepositDecision" name="Fixed Deposit Rate">
+    <variable id="var_FixedDepositDecision" name="Fixed Deposit Rate" typeRef="number"/>
     <decisionTable id="FixedDepositTable" hitPolicy="FIRST">
       <input id="i1" label="Tenure (Days)"><inputExpression typeRef="number"><text>tenure</text></inputExpression></input>
       <input id="i2" label="Amount"><inputExpression typeRef="number"><text>amount</text></inputExpression></input>

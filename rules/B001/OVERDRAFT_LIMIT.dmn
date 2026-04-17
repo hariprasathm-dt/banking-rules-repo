@@ -1,10 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/"
              xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/"
              xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/"
              id="B001_OVERDRAFT_LIMIT" name="American Express - Overdraft Limit"
              namespace="https://banking.rules/B001/OVERDRAFT_LIMIT">
   <decision id="OverdraftLimitDecision" name="Overdraft Limit">
+    <variable id="var_OverdraftLimitDecision" name="Overdraft Limit" typeRef="number"/>
     <decisionTable id="OverdraftLimitTable" hitPolicy="FIRST">
       <input id="i1" label="Account History (Months)">
         <inputExpression typeRef="number"><text>accountHistoryMonths</text></inputExpression>
