@@ -41,7 +41,7 @@
         <outputEntry><text>2.75</text></outputEntry>
       </rule>
       <rule id="r6">
-        <inputEntry><text>< 5000</text></inputEntry>
+        <inputEntry><text>&lt; 5000</text></inputEntry>
         <inputEntry><text>"BASIC"</text></inputEntry>
         <outputEntry><text>2.25</text></outputEntry>
       </rule>
