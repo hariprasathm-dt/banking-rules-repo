@@ -20,32 +20,32 @@
       </input>
       <output id="o_interestRate" name="interestRate" label="Interest Rate (%)" typeRef="number"/>
       <rule id="r1">
-        <inputEntry><text>>= 100000</text></inputEntry>
+        <inputEntry><text>&gt;= 100000</text></inputEntry>
         <inputEntry><text>"PREMIUM"</text></inputEntry>
         <outputEntry><text>5.25</text></outputEntry>
       </rule>
       <rule id="r2">
-        <inputEntry><text>>= 50000</text></inputEntry>
+        <inputEntry><text>&gt;= 50000</text></inputEntry>
         <inputEntry><text>"PREMIUM"</text></inputEntry>
         <outputEntry><text>4.75</text></outputEntry>
       </rule>
       <rule id="r3">
-        <inputEntry><text>>= 25000</text></inputEntry>
+        <inputEntry><text>&gt;= 25000</text></inputEntry>
         <inputEntry><text>"REGULAR"</text></inputEntry>
         <outputEntry><text>3.5</text></outputEntry>
       </rule>
       <rule id="r4">
-        <inputEntry><text>>= 10000</text></inputEntry>
+        <inputEntry><text>&gt;= 10000</text></inputEntry>
         <inputEntry><text>"REGULAR"</text></inputEntry>
         <outputEntry><text>3.25</text></outputEntry>
       </rule>
       <rule id="r5">
-        <inputEntry><text>>= 5000</text></inputEntry>
+        <inputEntry><text>&gt;= 5000</text></inputEntry>
         <inputEntry><text>"REGULAR"</text></inputEntry>
         <outputEntry><text>2.75</text></outputEntry>
       </rule>
       <rule id="r6">
-        <inputEntry><text>< 5000</text></inputEntry>
+        <inputEntry><text>&lt; 5000</text></inputEntry>
         <inputEntry><text>"BASIC"</text></inputEntry>
         <outputEntry><text>2.25</text></outputEntry>
       </rule>
