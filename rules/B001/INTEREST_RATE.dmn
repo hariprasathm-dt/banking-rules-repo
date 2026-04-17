@@ -25,19 +25,19 @@
         <outputEntry><text>23.0</text></outputEntry>
       </rule>
       <rule id="r2">
-        <inputEntry><text>&gt;= 50000</text></inputEntry>
-        <inputEntry><text>"PREMIUM"</text></inputEntry>
-        <outputEntry><text>6.0</text></outputEntry>
-      </rule>
-      <rule id="r3">
         <inputEntry><text>&gt;= 25000</text></inputEntry>
         <inputEntry><text>"REGULAR"</text></inputEntry>
         <outputEntry><text>3.5</text></outputEntry>
       </rule>
-      <rule id="r4">
+      <rule id="r3">
         <inputEntry><text>&lt; 5000</text></inputEntry>
         <inputEntry><text>"BASIC"</text></inputEntry>
         <outputEntry><text>2.25</text></outputEntry>
+      </rule>
+      <rule id="r4">
+        <inputEntry><text>&gt;= 50000</text></inputEntry>
+        <inputEntry><text>"PREMIUM"</text></inputEntry>
+        <outputEntry><text>6.0</text></outputEntry>
       </rule>
     </decisionTable>
   </decision>
