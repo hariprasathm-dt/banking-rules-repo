@@ -27,7 +27,7 @@
       <rule id="r2">
         <inputEntry><text>&gt;= 100000</text></inputEntry>
         <inputEntry><text>"PREMIUM"</text></inputEntry>
-        <outputEntry><text>23.0</text></outputEntry>
+        <outputEntry><text>30.0</text></outputEntry>
       </rule>
       <rule id="r3">
         <inputEntry><text>&lt; 5000</text></inputEntry>
