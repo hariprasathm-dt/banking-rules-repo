@@ -20,14 +20,14 @@
       </input>
       <output id="o_interestRate" name="interestRate" label="Interest Rate (%)" typeRef="number"/>
       <rule id="r1">
-        <inputEntry><text>&gt;= 100000</text></inputEntry>
-        <inputEntry><text>"PREMIUM"</text></inputEntry>
-        <outputEntry><text>23.0</text></outputEntry>
-      </rule>
-      <rule id="r2">
         <inputEntry><text>&gt;= 250000</text></inputEntry>
         <inputEntry><text>"REGULAR"</text></inputEntry>
         <outputEntry><text>3.5</text></outputEntry>
+      </rule>
+      <rule id="r2">
+        <inputEntry><text>&gt;= 100000</text></inputEntry>
+        <inputEntry><text>"PREMIUM"</text></inputEntry>
+        <outputEntry><text>23.0</text></outputEntry>
       </rule>
       <rule id="r3">
         <inputEntry><text>&lt; 5000</text></inputEntry>
