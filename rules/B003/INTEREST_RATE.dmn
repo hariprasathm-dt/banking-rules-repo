@@ -5,8 +5,12 @@
              id="B003_INTEREST_RATE"
              name="B003 - Interest Rate Decision"
              namespace="https://banking.rules/B003/INTEREST_RATE">
+    <inputData id="input_balance" name="balance"><variable id="var_input_balance" name="balance" typeRef="number"/></inputData>
+  <inputData id="input_customerType" name="customerType"><variable id="var_input_customerType" name="customerType" typeRef="string"/></inputData>
   <decision id="decision_interest_rate" name="Interest Rate Decision">
     <variable id="var_decision_interest_rate" name="Interest Rate Decision" typeRef="number"/>
+    <informationRequirement id="ir_balance"><requiredInput href="#input_balance"/></informationRequirement>
+    <informationRequirement id="ir_customerType"><requiredInput href="#input_customerType"/></informationRequirement>
     <decisionTable id="table_interest_rate" hitPolicy="FIRST">
       <input id="i_balance" label="Balance">
         <inputExpression typeRef="number"><text>balance</text></inputExpression>
