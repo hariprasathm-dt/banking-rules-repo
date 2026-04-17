@@ -5,7 +5,7 @@
              id="B001_INTEREST_RATE"
              name="B001 - Interest Rate Decision"
              namespace="https://banking.rules/B001/INTEREST_RATE">
-    <inputData id="input_balance" name="balance"><variable id="var_input_balance" name="balance" typeRef="number"/></inputData>
+  <inputData id="input_balance" name="balance"><variable id="var_input_balance" name="balance" typeRef="number"/></inputData>
   <inputData id="input_customerType" name="customerType"><variable id="var_input_customerType" name="customerType" typeRef="string"/></inputData>
   <decision id="decision_interest_rate" name="Interest Rate Decision">
     <variable id="var_decision_interest_rate" name="Interest Rate Decision" typeRef="number"/>
@@ -22,7 +22,7 @@
       <rule id="r1">
         <inputEntry><text>>= 100000</text></inputEntry>
         <inputEntry><text>"PREMIUM"</text></inputEntry>
-        <outputEntry><text>9.0</text></outputEntry>
+        <outputEntry><text>5.25</text></outputEntry>
       </rule>
       <rule id="r2">
         <inputEntry><text>>= 50000</text></inputEntry>
@@ -45,7 +45,7 @@
         <outputEntry><text>2.75</text></outputEntry>
       </rule>
       <rule id="r6">
-        <inputEntry><text>&lt; 5000</text></inputEntry>
+        <inputEntry><text>< 5000</text></inputEntry>
         <inputEntry><text>"BASIC"</text></inputEntry>
         <outputEntry><text>2.25</text></outputEntry>
       </rule>
