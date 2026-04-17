@@ -2,41 +2,23 @@
 <definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/"
              xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/"
              xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/"
-             id="B006_LOAN_ELIGIBILITY"
-             name="B006 - Loan Eligibility Decision"
+             id="B006_LOAN_ELIGIBILITY" name="B006 - Loan Eligibility"
              namespace="https://banking.rules/B006/LOAN_ELIGIBILITY">
-  <decision id="decision_loan_eligibility" name="Loan Eligibility Decision">
-    <variable id="var_decision_loan_eligibility" name="Loan Eligibility Decision" typeRef="string"/>
-    <decisionTable id="table_loan_eligibility" hitPolicy="FIRST">
-      <input id="i_creditScore" label="CreditScore">
-        <inputExpression typeRef="number"><text>creditScore</text></inputExpression>
-      </input>
-      <input id="i_monthlyIncome" label="MonthlyIncome">
-        <inputExpression typeRef="number"><text>monthlyIncome</text></inputExpression>
-      </input>
-      <output id="o_maxLoanAmount" name="maxLoanAmount" label="Max Loan Amount" typeRef="string"/>
-      <output id="o_approvedRate" name="approvedRate" label="Approved Rate (%)" typeRef="number"/>
-      <rule id="r1">
-        <inputEntry><text>&gt;= 750</text></inputEntry>
-        <inputEntry><text>&gt;= 50000</text></inputEntry>
-        <outputEntry><text>"Up to 75 Lakhs"</text></outputEntry>
-        <outputEntry><text>8.5</text></outputEntry>
-      </rule>
-      <rule id="r2">
-        <inputEntry><text>&gt;= 700</text></inputEntry>
-        <inputEntry><text>&gt;= 30000</text></inputEntry>
-        <outputEntry><text>"Up to 50 Lakhs"</text></outputEntry>
-        <outputEntry><text>9.5</text></outputEntry>
-      </rule>
-      <rule id="r3">
-        <inputEntry><text>-</text></inputEntry>
-        <inputEntry><text>-</text></inputEntry>
-        <outputEntry><text>"Up to 10 Lakhs"</text></outputEntry>
-        <outputEntry><text>12.0</text></outputEntry>
-      </rule>
+  <inputData id="inputCreditScore" name="creditScore"><variable id="varCreditScore" name="creditScore" typeRef="number"/></inputData>
+  <inputData id="inputMonthlyIncome" name="monthlyIncome"><variable id="varMonthlyIncome" name="monthlyIncome" typeRef="number"/></inputData>
+  <decision id="LoanEligibilityDecision" name="Loan Eligibility Decision">
+    <variable id="varDecision" name="Loan Eligibility Decision" typeRef="string"/>
+    <informationRequirement id="ir1"><requiredInput href="#inputCreditScore"/></informationRequirement>
+    <informationRequirement id="ir2"><requiredInput href="#inputMonthlyIncome"/></informationRequirement>
+    <decisionTable id="LoanEligibilityTable" hitPolicy="FIRST">
+      <input id="i1" label="Credit Score"><inputExpression typeRef="number"><text>creditScore</text></inputExpression></input>
+      <input id="i2" label="Monthly Income"><inputExpression typeRef="number"><text>monthlyIncome</text></inputExpression></input>
+      <output id="o1" name="maxLoanAmount" label="Max Loan Amount" typeRef="string"/>
+      <output id="o2" name="approvedRate" label="Approved Rate (%)" typeRef="number"/>
+      <rule id="r1"><inputEntry><text>&gt;= 750</text></inputEntry><inputEntry><text>&gt;= 50000</text></inputEntry><outputEntry><text>"Up to 75 Lakhs"</text></outputEntry><outputEntry><text>8.5</text></outputEntry></rule>
+      <rule id="r2"><inputEntry><text>&gt;= 700</text></inputEntry><inputEntry><text>&gt;= 30000</text></inputEntry><outputEntry><text>"Up to 50 Lakhs"</text></outputEntry><outputEntry><text>9.5</text></outputEntry></rule>
+      <rule id="r3"><inputEntry><text>-</text></inputEntry><inputEntry><text>-</text></inputEntry><outputEntry><text>"Up to 10 Lakhs"</text></outputEntry><outputEntry><text>12.0</text></outputEntry></rule>
     </decisionTable>
   </decision>
-  <dmndi:DMNDI><dmndi:DMNDiagram>
-    <dmndi:DMNShape dmnElementRef="decision_loan_eligibility"><dc:Bounds x="150" y="150" width="200" height="80"/></dmndi:DMNShape>
-  </dmndi:DMNDiagram></dmndi:DMNDI>
+  <dmndi:DMNDI><dmndi:DMNDiagram><dmndi:DMNShape dmnElementRef="LoanEligibilityDecision"><dc:Bounds x="150" y="150" width="200" height="80"/></dmndi:DMNShape></dmndi:DMNDiagram></dmndi:DMNDI>
 </definitions>

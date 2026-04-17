@@ -2,22 +2,19 @@
 <definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/"
              xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/"
              xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/"
-             id="B010_OVERDRAFT_LIMIT"
-             name="B010 - Overdraft Limit Decision"
+             id="B010_OVERDRAFT_LIMIT" name="B010 - Overdraft Limit"
              namespace="https://banking.rules/B010/OVERDRAFT_LIMIT">
-  <decision id="decision_overdraft_limit" name="Overdraft Limit Decision">
-    <variable id="var_decision_overdraft_limit" name="Overdraft Limit Decision" typeRef="number"/>
-    <decisionTable id="table_overdraft_limit" hitPolicy="FIRST">
-      <input id="i_accountHistory" label="AccountHistory">
-        <inputExpression typeRef="string"><text>accountHistory</text></inputExpression>
-      </input>
-      <output id="o_overdraftLimit" name="overdraftLimit" label="Overdraft Limit" typeRef="number"/>
+  <inputData id="inputAccountHistory" name="accountHistory"><variable id="varAccountHistory" name="accountHistory" typeRef="string"/></inputData>
+  <decision id="OverdraftLimitDecision" name="Overdraft Limit Decision">
+    <variable id="varDecision" name="Overdraft Limit Decision" typeRef="number"/>
+    <informationRequirement id="ir1"><requiredInput href="#inputAccountHistory"/></informationRequirement>
+    <decisionTable id="OverdraftLimitTable" hitPolicy="FIRST">
+      <input id="i1" label="Account History"><inputExpression typeRef="string"><text>accountHistory</text></inputExpression></input>
+      <output id="o1" name="overdraftLimit" label="Overdraft Limit" typeRef="number"/>
       <rule id="r1"><inputEntry><text>"EXCELLENT"</text></inputEntry><outputEntry><text>50000</text></outputEntry></rule>
       <rule id="r2"><inputEntry><text>"GOOD"</text></inputEntry><outputEntry><text>25000</text></outputEntry></rule>
       <rule id="r3"><inputEntry><text>-</text></inputEntry><outputEntry><text>10000</text></outputEntry></rule>
     </decisionTable>
   </decision>
-  <dmndi:DMNDI><dmndi:DMNDiagram>
-    <dmndi:DMNShape dmnElementRef="decision_overdraft_limit"><dc:Bounds x="150" y="150" width="200" height="80"/></dmndi:DMNShape>
-  </dmndi:DMNDiagram></dmndi:DMNDI>
+  <dmndi:DMNDI><dmndi:DMNDiagram><dmndi:DMNShape dmnElementRef="OverdraftLimitDecision"><dc:Bounds x="150" y="150" width="200" height="80"/></dmndi:DMNShape></dmndi:DMNDiagram></dmndi:DMNDI>
 </definitions>

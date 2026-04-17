@@ -2,22 +2,19 @@
 <definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/"
              xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/"
              xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/"
-             id="B003_FIXED_DEPOSIT"
-             name="B003 - Fixed Deposit Rate Decision"
+             id="B003_FIXED_DEPOSIT" name="B003 - Fixed Deposit Rate"
              namespace="https://banking.rules/B003/FIXED_DEPOSIT">
-  <decision id="decision_fixed_deposit" name="Fixed Deposit Rate Decision">
-    <variable id="var_decision_fixed_deposit" name="Fixed Deposit Rate Decision" typeRef="number"/>
-    <decisionTable id="table_fixed_deposit" hitPolicy="FIRST">
-      <input id="i_tenure" label="Tenure">
-        <inputExpression typeRef="string"><text>tenure</text></inputExpression>
-      </input>
-      <output id="o_interestRate" name="interestRate" label="Interest Rate (%)" typeRef="number"/>
+  <inputData id="inputTenure" name="tenure"><variable id="varTenure" name="tenure" typeRef="string"/></inputData>
+  <decision id="FixedDepositDecision" name="Fixed Deposit Rate Decision">
+    <variable id="varDecision" name="Fixed Deposit Rate Decision" typeRef="number"/>
+    <informationRequirement id="ir1"><requiredInput href="#inputTenure"/></informationRequirement>
+    <decisionTable id="FixedDepositTable" hitPolicy="FIRST">
+      <input id="i1" label="Tenure"><inputExpression typeRef="string"><text>tenure</text></inputExpression></input>
+      <output id="o1" name="interestRate" label="Interest Rate (%)" typeRef="number"/>
       <rule id="r1"><inputEntry><text>"12 months"</text></inputEntry><outputEntry><text>7.5</text></outputEntry></rule>
       <rule id="r2"><inputEntry><text>"6 months"</text></inputEntry><outputEntry><text>6.5</text></outputEntry></rule>
       <rule id="r3"><inputEntry><text>-</text></inputEntry><outputEntry><text>5.5</text></outputEntry></rule>
     </decisionTable>
   </decision>
-  <dmndi:DMNDI><dmndi:DMNDiagram>
-    <dmndi:DMNShape dmnElementRef="decision_fixed_deposit"><dc:Bounds x="150" y="150" width="200" height="80"/></dmndi:DMNShape>
-  </dmndi:DMNDiagram></dmndi:DMNDI>
+  <dmndi:DMNDI><dmndi:DMNDiagram><dmndi:DMNShape dmnElementRef="FixedDepositDecision"><dc:Bounds x="150" y="150" width="200" height="80"/></dmndi:DMNShape></dmndi:DMNDiagram></dmndi:DMNDI>
 </definitions>

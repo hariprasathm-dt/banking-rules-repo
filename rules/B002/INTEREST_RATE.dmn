@@ -2,37 +2,22 @@
 <definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/"
              xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/"
              xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/"
-             id="B002_INTEREST_RATE"
-             name="B002 - Interest Rate Decision"
+             id="B002_INTEREST_RATE" name="B002 - Interest Rate"
              namespace="https://banking.rules/B002/INTEREST_RATE">
-  <decision id="decision_interest_rate" name="Interest Rate Decision">
-    <variable id="var_decision_interest_rate" name="Interest Rate Decision" typeRef="number"/>
-    <decisionTable id="table_interest_rate" hitPolicy="FIRST">
-      <input id="i_balance" label="Balance">
-        <inputExpression typeRef="number"><text>balance</text></inputExpression>
-      </input>
-      <input id="i_customerType" label="CustomerType">
-        <inputExpression typeRef="string"><text>customerType</text></inputExpression>
-      </input>
-      <output id="o_interestRate" name="interestRate" label="Interest Rate (%)" typeRef="number"/>
-      <rule id="r1">
-        <inputEntry><text>&gt;= 100000</text></inputEntry>
-        <inputEntry><text>"PREMIUM"</text></inputEntry>
-        <outputEntry><text>5.5</text></outputEntry>
-      </rule>
-      <rule id="r2">
-        <inputEntry><text>&gt;= 50000</text></inputEntry>
-        <inputEntry><text>-</text></inputEntry>
-        <outputEntry><text>4.75</text></outputEntry>
-      </rule>
-      <rule id="r3">
-        <inputEntry><text>-</text></inputEntry>
-        <inputEntry><text>-</text></inputEntry>
-        <outputEntry><text>3.5</text></outputEntry>
-      </rule>
+  <inputData id="inputBalance" name="balance"><variable id="varBalance" name="balance" typeRef="number"/></inputData>
+  <inputData id="inputCustomerType" name="customerType"><variable id="varCustomerType" name="customerType" typeRef="string"/></inputData>
+  <decision id="InterestRateDecision" name="Interest Rate Decision">
+    <variable id="varDecision" name="Interest Rate Decision" typeRef="number"/>
+    <informationRequirement id="ir1"><requiredInput href="#inputBalance"/></informationRequirement>
+    <informationRequirement id="ir2"><requiredInput href="#inputCustomerType"/></informationRequirement>
+    <decisionTable id="InterestRateTable" hitPolicy="FIRST">
+      <input id="i1" label="Balance"><inputExpression typeRef="number"><text>balance</text></inputExpression></input>
+      <input id="i2" label="Customer Type"><inputExpression typeRef="string"><text>customerType</text></inputExpression></input>
+      <output id="o1" name="interestRate" label="Interest Rate (%)" typeRef="number"/>
+      <rule id="r1"><inputEntry><text>&gt;= 100000</text></inputEntry><inputEntry><text>"PREMIUM"</text></inputEntry><outputEntry><text>5.5</text></outputEntry></rule>
+      <rule id="r2"><inputEntry><text>&gt;= 50000</text></inputEntry><inputEntry><text>-</text></inputEntry><outputEntry><text>4.75</text></outputEntry></rule>
+      <rule id="r3"><inputEntry><text>-</text></inputEntry><inputEntry><text>-</text></inputEntry><outputEntry><text>3.5</text></outputEntry></rule>
     </decisionTable>
   </decision>
-  <dmndi:DMNDI><dmndi:DMNDiagram>
-    <dmndi:DMNShape dmnElementRef="decision_interest_rate"><dc:Bounds x="150" y="150" width="200" height="80"/></dmndi:DMNShape>
-  </dmndi:DMNDiagram></dmndi:DMNDI>
+  <dmndi:DMNDI><dmndi:DMNDiagram><dmndi:DMNShape dmnElementRef="InterestRateDecision"><dc:Bounds x="150" y="150" width="200" height="80"/></dmndi:DMNShape></dmndi:DMNDiagram></dmndi:DMNDI>
 </definitions>

@@ -2,21 +2,18 @@
 <definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/"
              xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/"
              xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/"
-             id="B006_EARLY_WITHDRAWAL"
-             name="B006 - Early Withdrawal Penalty Decision"
+             id="B006_EARLY_WITHDRAWAL" name="B006 - Early Withdrawal Penalty"
              namespace="https://banking.rules/B006/EARLY_WITHDRAWAL">
-  <decision id="decision_early_withdrawal" name="Early Withdrawal Penalty Decision">
-    <variable id="var_decision_early_withdrawal" name="Early Withdrawal Penalty Decision" typeRef="number"/>
-    <decisionTable id="table_early_withdrawal" hitPolicy="FIRST">
-      <input id="i_tenure" label="Tenure">
-        <inputExpression typeRef="string"><text>tenure</text></inputExpression>
-      </input>
-      <output id="o_penaltyRate" name="penaltyRate" label="Penalty Rate (%)" typeRef="number"/>
+  <inputData id="inputTenure" name="tenure"><variable id="varTenure" name="tenure" typeRef="string"/></inputData>
+  <decision id="EarlyWithdrawalDecision" name="Early Withdrawal Penalty Decision">
+    <variable id="varDecision" name="Early Withdrawal Penalty Decision" typeRef="number"/>
+    <informationRequirement id="ir1"><requiredInput href="#inputTenure"/></informationRequirement>
+    <decisionTable id="EarlyWithdrawalTable" hitPolicy="FIRST">
+      <input id="i1" label="Tenure"><inputExpression typeRef="string"><text>tenure</text></inputExpression></input>
+      <output id="o1" name="penaltyRate" label="Penalty Rate (%)" typeRef="number"/>
       <rule id="r1"><inputEntry><text>"12 months"</text></inputEntry><outputEntry><text>1.0</text></outputEntry></rule>
       <rule id="r2"><inputEntry><text>-</text></inputEntry><outputEntry><text>2.0</text></outputEntry></rule>
     </decisionTable>
   </decision>
-  <dmndi:DMNDI><dmndi:DMNDiagram>
-    <dmndi:DMNShape dmnElementRef="decision_early_withdrawal"><dc:Bounds x="150" y="150" width="200" height="80"/></dmndi:DMNShape>
-  </dmndi:DMNDiagram></dmndi:DMNDI>
+  <dmndi:DMNDI><dmndi:DMNDiagram><dmndi:DMNShape dmnElementRef="EarlyWithdrawalDecision"><dc:Bounds x="150" y="150" width="200" height="80"/></dmndi:DMNShape></dmndi:DMNDiagram></dmndi:DMNDI>
 </definitions>

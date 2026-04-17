@@ -2,22 +2,19 @@
 <definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/"
              xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/"
              xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/"
-             id="B002_CREDIT_CARD_REWARDS"
-             name="B002 - Credit Card Rewards Decision"
+             id="B002_CREDIT_CARD_REWARDS" name="B002 - Credit Card Rewards"
              namespace="https://banking.rules/B002/CREDIT_CARD_REWARDS">
-  <decision id="decision_credit_card_rewards" name="Credit Card Rewards Decision">
-    <variable id="var_decision_credit_card_rewards" name="Credit Card Rewards Decision" typeRef="number"/>
-    <decisionTable id="table_credit_card_rewards" hitPolicy="FIRST">
-      <input id="i_category" label="Category">
-        <inputExpression typeRef="string"><text>category</text></inputExpression>
-      </input>
-      <output id="o_rewardPoints" name="rewardPoints" label="Reward Points" typeRef="number"/>
+  <inputData id="inputCategory" name="category"><variable id="varCategory" name="category" typeRef="string"/></inputData>
+  <decision id="CreditCardRewardsDecision" name="Credit Card Rewards Decision">
+    <variable id="varDecision" name="Credit Card Rewards Decision" typeRef="number"/>
+    <informationRequirement id="ir1"><requiredInput href="#inputCategory"/></informationRequirement>
+    <decisionTable id="CreditCardRewardsTable" hitPolicy="FIRST">
+      <input id="i1" label="Category"><inputExpression typeRef="string"><text>category</text></inputExpression></input>
+      <output id="o1" name="rewardPoints" label="Reward Points" typeRef="number"/>
       <rule id="r1"><inputEntry><text>"DINING"</text></inputEntry><outputEntry><text>5.0</text></outputEntry></rule>
       <rule id="r2"><inputEntry><text>"TRAVEL"</text></inputEntry><outputEntry><text>3.0</text></outputEntry></rule>
       <rule id="r3"><inputEntry><text>-</text></inputEntry><outputEntry><text>1.0</text></outputEntry></rule>
     </decisionTable>
   </decision>
-  <dmndi:DMNDI><dmndi:DMNDiagram>
-    <dmndi:DMNShape dmnElementRef="decision_credit_card_rewards"><dc:Bounds x="150" y="150" width="200" height="80"/></dmndi:DMNShape>
-  </dmndi:DMNDiagram></dmndi:DMNDI>
+  <dmndi:DMNDI><dmndi:DMNDiagram><dmndi:DMNShape dmnElementRef="CreditCardRewardsDecision"><dc:Bounds x="150" y="150" width="200" height="80"/></dmndi:DMNShape></dmndi:DMNDiagram></dmndi:DMNDI>
 </definitions>
