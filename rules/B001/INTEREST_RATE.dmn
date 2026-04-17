@@ -22,7 +22,7 @@
       <rule id="r1">
         <inputEntry><text>&gt;= 100000</text></inputEntry>
         <inputEntry><text>"PREMIUM"</text></inputEntry>
-        <outputEntry><text>5.25</text></outputEntry>
+        <outputEntry><text>9.5</text></outputEntry>
       </rule>
       <rule id="r2">
         <inputEntry><text>&gt;= 50000</text></inputEntry>
@@ -35,16 +35,6 @@
         <outputEntry><text>3.5</text></outputEntry>
       </rule>
       <rule id="r4">
-        <inputEntry><text>&gt;= 10000</text></inputEntry>
-        <inputEntry><text>"REGULAR"</text></inputEntry>
-        <outputEntry><text>3.25</text></outputEntry>
-      </rule>
-      <rule id="r5">
-        <inputEntry><text>&gt;= 5000</text></inputEntry>
-        <inputEntry><text>"REGULAR"</text></inputEntry>
-        <outputEntry><text>2.75</text></outputEntry>
-      </rule>
-      <rule id="r6">
         <inputEntry><text>&lt; 5000</text></inputEntry>
         <inputEntry><text>"BASIC"</text></inputEntry>
         <outputEntry><text>2.25</text></outputEntry>
